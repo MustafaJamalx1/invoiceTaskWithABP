@@ -1,0 +1,18 @@
+﻿{
+  "applications": {
+    "invoiceTask.Web": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44300",
+      "path": "../../../src/invoiceTask.Web/invoiceTask.Web.csproj",
+      "kubernetesService": ".*-web$",
+      "healthCheckEndpoint": "/health-status",
+      "healthUiEndpoint": "/health-ui",
+      "execution": {
+        "order": 2
+      }
+    }
+  },
+  "containers": {
+    "serviceName": "invoiceTask-Containers",
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.LeptonXLiteTheme": {
+      "version": "4.2.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.Account": {
+      "version": "9.2.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "9.2.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.Identity": {
+      "version": "9.2.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "9.2.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "9.2.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "9.2.0",
+      "isInstalled": true
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "invoiceTask.Application": {
+      "path": "src/invoiceTask.Application/invoiceTask.Application.abppkg",
+      "folder": "src"
+    },
+    "invoiceTask.Application.Tests": {
+      "path": "test/invoiceTask.Application.Tests/invoiceTask.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "invoiceTask.Domain.Shared": {
+      "path": "src/invoiceTask.Domain.Shared/invoiceTask.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "invoiceTask.Application.Contracts": {
+      "path": "src/invoiceTask.Application.Contracts/invoiceTask.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "invoiceTask.HttpApi": {
+      "path": "src/invoiceTask.HttpApi/invoiceTask.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "invoiceTask.HttpApi.Client": {
+      "path": "src/invoiceTask.HttpApi.Client/invoiceTask.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "invoiceTask.Web": {
+      "path": "src/invoiceTask.Web/invoiceTask.Web.abppkg",
+      "folder": "src"
+    },
+    "invoiceTask.Web.Tests": {
+      "path": "test/invoiceTask.Web.Tests/invoiceTask.Web.Tests.abppkg",
+      "folder": "test"
+    },
+    "invoiceTask.EntityFrameworkCore.Tests": {
+      "path": "test/invoiceTask.EntityFrameworkCore.Tests/invoiceTask.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "invoiceTask.EntityFrameworkCore": {
+      "path": "src/invoiceTask.EntityFrameworkCore/invoiceTask.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "invoiceTask.TestBase": {
+      "path": "test/invoiceTask.TestBase/invoiceTask.TestBase.abppkg",
+      "folder": "test"
+    },
+    "invoiceTask.Domain.Tests": {
+      "path": "test/invoiceTask.Domain.Tests/invoiceTask.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "invoiceTask.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/invoiceTask.HttpApi.Client.ConsoleTestApp/invoiceTask.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "invoiceTask.DbMigrator": {
+      "path": "src/invoiceTask.DbMigrator/invoiceTask.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "invoiceTask.Domain": {
+      "path": "src/invoiceTask.Domain/invoiceTask.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}
