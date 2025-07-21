@@ -13,6 +13,8 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
 using Volo.Abp.Studio;
+using invoiceTask.Entites;
+using invoiceTask.Repository;
 
 namespace invoiceTask.EntityFrameworkCore;
 
@@ -42,6 +44,7 @@ public class invoiceTaskEntityFrameworkCoreModule : AbpModule
         {
                 /* Remove "includeAllEntities: true" to create
                  * default repositories only for aggregate roots */
+            options.AddRepository<Product,ProductRepository>();
             options.AddDefaultRepositories(includeAllEntities: true);
         });
 
