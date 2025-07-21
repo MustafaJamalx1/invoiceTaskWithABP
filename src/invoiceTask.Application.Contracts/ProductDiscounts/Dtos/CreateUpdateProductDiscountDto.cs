@@ -4,17 +4,18 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.Application.Dtos;
 
-namespace invoiceTask.Entites
+namespace invoiceTask.ProductDiscounts.Dtos
 {
-    public class ProductPricing: FullAuditedEntity<Guid>
+    public class CreateUpdateProductDiscountDto
     {
-
+        [Required]
         public Guid ProductId { get; set; }
-        public decimal Price { get; set; }
+        [Required]
+        public decimal Discount { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public Product Product { get; set; }
+
     }
 }

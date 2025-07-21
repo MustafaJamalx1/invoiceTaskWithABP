@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 using invoiceTask.EntityFrameworkCore;
@@ -12,9 +13,11 @@ using invoiceTask.EntityFrameworkCore;
 namespace invoiceTask.Migrations
 {
     [DbContext(typeof(invoiceTaskDbContext))]
-    partial class invoiceTaskDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250717075045_EditedTheConfigurationAndName")]
+    partial class EditedTheConfigurationAndName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

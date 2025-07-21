@@ -85,10 +85,32 @@ public class invoiceTaskDbContext :
         //});
         builder.Entity<Invoice>(i =>
         {
-            i.HasMany(i => i.InvoiceItems)
-            .WithOne(j => j.Invoice)
-            .HasForeignKey(i => i.InvoiceId)
-            .IsRequired();
+            i.ToTable(invoiceTaskConsts.DbTablePrefix + "Invoices", invoiceTaskConsts.DbSchema);
+        });
+        builder.Entity<InvoiceItem>(i =>
+        {
+            i.ToTable(invoiceTaskConsts.DbTablePrefix + "InvoiceItems", invoiceTaskConsts.DbSchema);
+            i.Property(p => p.InvoiceId).IsRequired();
+        });
+
+
+        builder.Entity<Product>(b =>
+        {
+            b.ToTable(invoiceTaskConsts.DbTablePrefix + "Products", invoiceTaskConsts.DbSchema);
+            b.ConfigureByConvention(); //auto configure for the base class props
+        });
+        builder.Entity<ProductDiscount>(b =>
+        {
+            b.ToTable(invoiceTaskConsts.DbTablePrefix + "ProductDiscounts", invoiceTaskConsts.DbSchema);
+            b.ConfigureByConvention(); //auto configure for the base class props
+            b.Property(p => p.ProductId).IsRequired();
+
+        });
+        builder.Entity<ProductPricing>(b =>
+        {
+            b.ToTable(invoiceTaskConsts.DbTablePrefix + "ProductPricings", invoiceTaskConsts.DbSchema);
+            b.ConfigureByConvention(); //auto configure for the base class props
+            b.Property(p => p.ProductId).IsRequired();
         });
     }
 }
