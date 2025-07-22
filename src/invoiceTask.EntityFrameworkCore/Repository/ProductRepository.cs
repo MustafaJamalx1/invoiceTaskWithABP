@@ -21,5 +21,6 @@ namespace invoiceTask.Repository
 
             return await queryable.Include(o => o.Pricings).Include(o => o.Discounts).ToListAsync();
         }
+
     }
 }

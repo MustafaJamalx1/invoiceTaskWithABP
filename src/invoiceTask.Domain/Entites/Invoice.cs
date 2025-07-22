@@ -12,7 +12,7 @@ namespace invoiceTask.Entites
         public string CustomerName { get; set; }
         public int InvoiceNo { get; set; }
         public DateTime InvoiceDate { get; set; }
-        public ICollection<InvoiceItem> InvoiceItems { get; set; }=new List<InvoiceItem>();
+        public ICollection<InvoiceItem> InvoiceItems { get; set; }
 
         public decimal TotalAmount => InvoiceItems.Sum(i => i.TotalPrice);
         public decimal TotalDicsount=> InvoiceItems.Sum(i => i.Discount);

@@ -14,8 +14,8 @@ namespace invoiceTask.Entites
         public string Code { get; set; }
         public int PartNo { get; set; }
         
-        public ICollection<ProductDiscount> Discounts { get; set; }=new List<ProductDiscount>();
-        public ICollection<ProductPricing> Pricings{ get; set; } = new List<ProductPricing>();
+        public ICollection<ProductDiscount> Discounts { get; set; }
+        public ICollection<ProductPricing> Pricings{ get; set; } 
 
     }
 }

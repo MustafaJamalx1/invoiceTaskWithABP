@@ -15,9 +15,13 @@ namespace invoiceTask.Entites
         public Guid ProductId { get; set; }
         public Product Product { get; set; }
         public int Quantity { get; set; }
-        public decimal Price { get; set; }
+
+        public Guid ProductPricingId { get; private set; }
+        public decimal Price { get; private set; }
         public decimal TotalPrice => Quantity * Price;
-        public decimal Discount {  get; set; }
+
+        public Guid ProductDiscountId { get; private set; }
+        public decimal Discount {  get; private set; }
         public decimal TotalNet => Discount * TotalPrice;
     }
 }
