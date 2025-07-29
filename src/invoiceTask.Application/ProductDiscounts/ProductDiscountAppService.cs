@@ -1,4 +1,5 @@
 ﻿using invoiceTask.Entites;
+using invoiceTask.IRepos;
 using invoiceTask.ProductDiscounts.Dtos;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,11 @@ namespace invoiceTask.ProductDiscounts
 {
     public class ProductDiscountAppService : CrudAppService<ProductDiscount,ProductDiscountDto,Guid,PagedAndSortedResultRequestDto,CreateUpdateProductDiscountDto>,IProductDiscountAppService
     {
-        public ProductDiscountAppService(IRepository<ProductDiscount,Guid> repository):base(repository)
+        private readonly IProductDiscountRepository _productRepository;
+        public ProductDiscountAppService(IProductDiscountRepository repository):base(repository)
         {
             
+            _productRepository = repository;
         }
     }
 }

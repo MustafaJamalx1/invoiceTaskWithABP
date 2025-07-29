@@ -86,6 +86,9 @@ public class invoiceTaskDbContext :
         builder.Entity<Invoice>(i =>
         {
             i.ToTable(invoiceTaskConsts.DbTablePrefix + "Invoices", invoiceTaskConsts.DbSchema);
+            i.Property(p => p.InvoiceNo)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn();
         });
         builder.Entity<InvoiceItem>(i =>
         {

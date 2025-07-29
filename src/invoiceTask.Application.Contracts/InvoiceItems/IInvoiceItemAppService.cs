@@ -9,7 +9,7 @@ using Volo.Abp.Application.Services;
 
 namespace invoiceTask.InvoiceItems
 {
-    public interface IInvoiceItemAppService : ICrudAppService<InvoiceItemdto,Guid,PagedAndSortedResultRequestDto,CreateUpdateInvoiceItemDto>
+    public interface IInvoiceItemAppService : ICrudAppService<InvoiceItemDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateInvoiceItemDto>
     {
     }
 }

@@ -8,30 +8,39 @@ using Volo.Abp.Application.Services;
 
 namespace invoiceTask.InvoiceItems
 {
-    public class InvoiceItemAppService : CrudAppService<InvoiceItem, InvoiceItemdto, Guid, PagedAndSortedResultRequestDto, CreateUpdateInvoiceItemDto>, IInvoiceItemAppService
+    public class InvoiceItemAppService : CrudAppService<InvoiceItem, InvoiceItemDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateInvoiceItemDto>, IInvoiceItemAppService
     {
         private readonly IInvoiceItemRepository _invoiceItemRepository;
-        public InvoiceItemAppService(IInvoiceItemRepository repository) : base(repository)
+        private readonly IProductPricingRepository _productPricingRepository;
+        private readonly IProductDiscountRepository _productDiscountRepository;
+        public InvoiceItemAppService(IInvoiceItemRepository repository, IProductPricingRepository productPricingRepository, IProductDiscountRepository productDiscountRepository) : base(repository)
         {
 
-                _invoiceItemRepository = repository;
+            _invoiceItemRepository = repository;
+            _productPricingRepository = productPricingRepository;
+            _productDiscountRepository = productDiscountRepository;
         }
 
-        public override Task<InvoiceItemdto> CreateAsync(CreateUpdateInvoiceItemDto input)
+        public override async Task<InvoiceItemDto> CreateAsync(CreateUpdateInvoiceItemDto input)
+
         {
-            var pricing= _invoiceItemRepository.GetActivePricing(input.ProductId);
-            var discount = _invoiceItemRepository.GetActiveDiscount(input.ProductId);
-            //InvoiceItemdto invoiceItem = new InvoiceItemdto({
-            //     ProductId = input.ProductId,
-            //    Price=pricing.Price,
-            //}
-            //    );
-            
+            var discount = await _productDiscountRepository.GetActiveDiscountAsync(input.ProductId);
+            var pricing = await _productPricingRepository.GetActivePricingAsync(input.ProductId);
 
+            var invoiceItem = ObjectMapper.Map<CreateUpdateInvoiceItemDto, InvoiceItem>(input);
+            invoiceItem.ProductPricingId = pricing.Id;
+            invoiceItem.Price = pricing.Price;
+            invoiceItem.Discount = discount?.Discount ?? 0;
+            invoiceItem.ProductDiscountId = discount?.Id ?? Guid.Empty;
+            invoiceItem.TotalPrice = invoiceItem.Price * invoiceItem.Quantity;
+            invoiceItem.TotalNet = invoiceItem.TotalPrice - (invoiceItem.TotalPrice * (invoiceItem.Discount / 100));
 
+            await _invoiceItemRepository.InsertAsync(invoiceItem);
 
-            return base.CreateAsync(input);
+            return ObjectMapper.Map<InvoiceItem, InvoiceItemDto>(invoiceItem);
+
         }
+
     }
 
 }

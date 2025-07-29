@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 using invoiceTask.EntityFrameworkCore;
@@ -12,9 +13,11 @@ using invoiceTask.EntityFrameworkCore;
 namespace invoiceTask.Migrations
 {
     [DbContext(typeof(invoiceTaskDbContext))]
-    partial class invoiceTaskDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250727071620_adjustedInvoiceFields")]
+    partial class adjustedInvoiceFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1828,7 +1831,7 @@ namespace invoiceTask.Migrations
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("TotalDiscount")
+                    b.Property<decimal>("TotalDicsount")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("TotalNet")

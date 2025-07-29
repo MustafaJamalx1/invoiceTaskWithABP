@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 using invoiceTask.EntityFrameworkCore;
@@ -12,9 +13,11 @@ using invoiceTask.EntityFrameworkCore;
 namespace invoiceTask.Migrations
 {
     [DbContext(typeof(invoiceTaskDbContext))]
-    partial class invoiceTaskDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250726082816_adjustedInvoiceNoInInvoice")]
+    partial class adjustedInvoiceNoInInvoice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1825,15 +1828,6 @@ namespace invoiceTask.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("LastModifierId");
 
-                    b.Property<decimal>("TotalAmount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("TotalDiscount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("TotalNet")
-                        .HasColumnType("decimal(18,2)");
-
                     b.HasKey("Id");
 
                     b.ToTable("AppInvoices", (string)null);
@@ -1906,12 +1900,6 @@ namespace invoiceTask.Migrations
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
-
-                    b.Property<decimal>("TotalNet")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("TotalPrice")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

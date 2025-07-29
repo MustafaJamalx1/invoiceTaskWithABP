@@ -1,5 +1,7 @@
 using AutoMapper;
 using invoiceTask.Entites;
+using invoiceTask.InvoiceItems.Dtos;
+using invoiceTask.Invoices.Dto;
 using invoiceTask.ProductDiscounts.Dtos;
 using invoiceTask.ProductPricings.Dtos;
 using invoiceTask.Products;
@@ -20,5 +22,10 @@ public class invoiceTaskApplicationAutoMapperProfile : Profile
         CreateMap<CreateUpdateProductDiscountDto, ProductDiscount>();
         CreateMap<ProductPricing, ProductPricingDto>();
         CreateMap<CreateUpdateProductPricingDto, ProductPricing>();
+        CreateMap<InvoiceItem, InvoiceItemDto>();
+        CreateMap<CreateUpdateInvoiceItemDto, InvoiceItem>();
+        CreateMap<Invoice, InvoiceDto>();
+        CreateMap<CreateUpdateInvoiceDto, Invoice>();
+
     }
 }

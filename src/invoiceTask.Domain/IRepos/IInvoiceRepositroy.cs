@@ -1,16 +1,14 @@
-﻿using System;
+﻿using invoiceTask.Entites;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using invoiceTask.Entites;
 using Volo.Abp.Domain.Repositories;
 
 namespace invoiceTask.IRepos
 {
-    public interface IInvoiceItemRepository : IRepository<InvoiceItem, Guid>
+    public interface IInvoiceRepositroy : IRepository<Invoice, Guid>
     {
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using invoiceTask.Entites;
+using invoiceTask.IRepos;
 using invoiceTask.ProductPricings.Dtos;
 using System;
 using Volo.Abp.Application.Dtos;
@@ -9,9 +10,11 @@ namespace invoiceTask.ProductPricings
 {
     public class ProductPricingAppService : CrudAppService<ProductPricing, ProductPricingDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateProductPricingDto>, IProductPricingAppService
     {
-        public ProductPricingAppService(IRepository<ProductPricing, Guid> repository) : base(repository)
+        private readonly IProductPricingRepository _productPricingRepository;
+        public ProductPricingAppService(IProductPricingRepository repository) : base(repository)
         {
             
+            _productPricingRepository = repository;
         }
     }
 }
