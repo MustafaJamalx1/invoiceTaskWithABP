@@ -45,7 +45,7 @@ public class invoiceTaskEntityFrameworkCoreModule : AbpModule
                 /* Remove "includeAllEntities: true" to create
                  * default repositories only for aggregate roots */
             options.AddRepository<Product,ProductRepository>();
-            options.AddRepository<InvoiceItem,InvoiceItemRepository>();
+            //options.AddRepository<InvoiceItem,InvoiceItemRepository>();
             options.AddDefaultRepositories(includeAllEntities: true);
         });
 

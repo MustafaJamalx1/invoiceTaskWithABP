@@ -10,12 +10,54 @@ namespace invoiceTask.Entites
 {
     public class Product: FullAuditedAggregateRoot<Guid>
     {
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public int PartNo { get; set; }
+        public string Name { get;  set; }
+        public string Code { get;  set; }
+        public int PartNo { get;  set; }
         
-        public ICollection<ProductDiscount> Discounts { get; set; }
-        public ICollection<ProductPricing> Pricings{ get; set; } 
+        public ICollection<ProductDiscount> Discounts { get; private set; }
+        public ICollection<ProductPricing> Pricings{ get; private set; } 
 
+
+      public void AddDiscount(ProductDiscount discount)
+        {
+            var productDiscount = new ProductDiscount(
+                this.Id,
+                discount.Discount,
+                discount.StartDate,
+                discount.EndDate
+            );
+            Discounts ??= new List<ProductDiscount>();
+            Discounts.Add(productDiscount);
+        }
+        public void AddPricing(ProductPricing pricing)
+        {
+            var productPricing = new ProductPricing(
+                this.Id,
+                pricing.Price,
+                pricing.StartDate,
+                pricing.EndDate
+            );
+            Pricings ??= new List<ProductPricing>();
+            Pricings.Add(productPricing);
+        }
+        public void RemoveDiscount(Guid discountId)
+        {
+            if (Discounts == null) return;
+            var discount = Discounts.FirstOrDefault(d => d.Id == discountId);
+            if (discount != null)
+            {
+                Discounts.Remove(discount);
+            }
+        }
+
+        public void RemovePricing(Guid pricingId)
+        {
+            if (Pricings == null) return;
+            var pricing = Pricings.FirstOrDefault(p => p.Id == pricingId);
+            if (pricing != null)
+            {
+                Pricings.Remove(pricing);
+            }
+        }
     }
 }

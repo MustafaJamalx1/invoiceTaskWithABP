@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Volo.Abp.Domain.Entities.Auditing;
 
 namespace invoiceTask.Entites
@@ -11,10 +6,17 @@ namespace invoiceTask.Entites
     public class ProductPricing: FullAuditedEntity<Guid>
     {
 
-        public Guid ProductId { get; set; }
-        public decimal Price { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public Product Product { get; set; }
+        public Guid ProductId { get; private set; }
+        public decimal Price { get; private set; }
+        public DateTime StartDate { get; private set; }
+        public DateTime EndDate { get; private set; }
+        public ProductPricing(Guid productId, decimal price, DateTime startDate, DateTime endDate)
+        {
+            Id = Guid.NewGuid(); 
+            ProductId = productId;
+            Price = price;
+            StartDate = startDate;
+            EndDate = endDate;
+        }
     }
 }

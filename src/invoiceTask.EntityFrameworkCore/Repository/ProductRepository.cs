@@ -22,5 +22,15 @@ namespace invoiceTask.Repository
             return await queryable.Include(o => o.Pricings).Include(o => o.Discounts).ToListAsync();
         }
 
+        public async Task<Product> GetWithDetailsAsync(Guid id)
+        {
+            var queryable = await GetQueryableAsync();
+            var product = await queryable.Include(o => o.Pricings).Include(o => o.Discounts).FirstOrDefaultAsync(p => p.Id == id);
+            if (product == null)
+            {
+                throw new Exception($"Product with ID {id} not found.");
+            }
+            return product;
+        }
     }
 }

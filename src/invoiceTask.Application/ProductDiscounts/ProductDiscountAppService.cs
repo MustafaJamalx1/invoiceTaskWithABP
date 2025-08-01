@@ -1,24 +1,24 @@
-﻿using invoiceTask.Entites;
-using invoiceTask.IRepos;
-using invoiceTask.ProductDiscounts.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.Application.Services;
-using Volo.Abp.Domain.Repositories;
+﻿//using invoiceTask.Entites;
+//using invoiceTask.IRepos;
+//using invoiceTask.ProductDiscounts.Dtos;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+//using Volo.Abp.Application.Dtos;
+//using Volo.Abp.Application.Services;
+//using Volo.Abp.Domain.Repositories;
 
-namespace invoiceTask.ProductDiscounts
-{
-    public class ProductDiscountAppService : CrudAppService<ProductDiscount,ProductDiscountDto,Guid,PagedAndSortedResultRequestDto,CreateUpdateProductDiscountDto>,IProductDiscountAppService
-    {
-        private readonly IProductDiscountRepository _productRepository;
-        public ProductDiscountAppService(IProductDiscountRepository repository):base(repository)
-        {
+//namespace invoiceTask.ProductDiscounts
+//{
+//    public class ProductDiscountAppService : CrudAppService<ProductDiscount,ProductDiscountDto,Guid,PagedAndSortedResultRequestDto,CreateUpdateProductDiscountDto>,IProductDiscountAppService
+//    {
+//        private readonly IProductDiscountRepository _productRepository;
+//        public ProductDiscountAppService(IProductDiscountRepository repository):base(repository)
+//        {
             
-            _productRepository = repository;
-        }
-    }
-}
+//            _productRepository = repository;
+//        }
+//    }
+//}

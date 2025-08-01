@@ -1,4 +1,5 @@
-﻿using System;
+﻿using invoiceTask.InvoiceItems.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,9 @@ namespace invoiceTask.Invoices.Dto
     {
         public string CustomerName { get; set; }
         public DateTime InvoiceDate { get; set; }
+
+        public List<InvoiceItemDto> InvoiceItems { get; set; }
+
         public decimal TotalAmount { get; set; }
         public decimal TotalDiscount { get; set; }
         public decimal TotalNet { get; set; }

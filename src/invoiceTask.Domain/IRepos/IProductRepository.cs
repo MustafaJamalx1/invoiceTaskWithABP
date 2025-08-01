@@ -11,5 +11,6 @@ namespace invoiceTask.IRepos
     public interface IProductRepository: IRepository<Product,Guid>
     {
         Task<List<Product>> GetAllWithDetailsAsync();
+        Task<Product> GetWithDetailsAsync(Guid id);
     }
 }

@@ -1,20 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Volo.Abp.Domain.Entities.Auditing;
 
 namespace invoiceTask.Entites
 {
     public class ProductDiscount: FullAuditedEntity<Guid>
     {
-        public Guid ProductId { get; set; }
-        public decimal Discount { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-
-        public Product Product { get; set; }
+        public Guid ProductId { get; private set; }
+        public decimal Discount { get; private set; }
+        public DateTime StartDate { get; private set; }
+        public DateTime EndDate { get; private set; }
+        public ProductDiscount(Guid productId, decimal discount, DateTime startDate, DateTime endDate)
+        {
+            Id = Guid.NewGuid();
+            ProductId = productId;
+            Discount = discount;
+            StartDate = startDate;
+            EndDate = endDate;
+        }
     }
 }

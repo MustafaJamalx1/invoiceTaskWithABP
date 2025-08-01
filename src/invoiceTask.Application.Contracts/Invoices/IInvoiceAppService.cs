@@ -12,6 +12,11 @@ namespace invoiceTask.Invoices
 {
     public interface IInvoiceAppService : ICrudAppService<InvoiceDto, Guid, PagedAndSortedResultRequestDto,CreateUpdateInvoiceDto>
     {
+        Task<InvoiceItemDto> AddInvoiceItemAsync(CreateUpdateInvoiceItemDto input);
+        Task<InvoiceItemDto> UpdateInvoiceItemAsync(Guid Id, CreateUpdateInvoiceItemDto input);
+        Task<InvoiceItemDto> RemoveInvoiceItemAsync(Guid Id);
+        Task<List<InvoiceDto>> GetListWithDetailsAsync();
+
 
     }
 }

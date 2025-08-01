@@ -10,5 +10,7 @@ namespace invoiceTask.IRepos
 {
     public interface IInvoiceRepositroy : IRepository<Invoice, Guid>
     {
+        Task<List<Invoice>> GetAllWithDetailsAsync();
+        Task<Invoice> GetWithDetailsAsync(Guid id);
     }
 }
