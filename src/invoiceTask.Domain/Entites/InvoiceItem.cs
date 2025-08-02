@@ -21,6 +21,7 @@ namespace invoiceTask.Entites
         public decimal Discount {  get; private set; }
         public decimal TotalNet { get; private set; }
         public InvoiceItem(
+            Guid id,
             Guid invoiceId,
             Guid productId,
             int quantity,
@@ -29,7 +30,7 @@ namespace invoiceTask.Entites
             Guid productDiscountId,
             decimal discount)
         {
-            Id = Guid.NewGuid();
+            Id = id;
             InvoiceId = invoiceId;
             ProductId = productId;
             Quantity = quantity;

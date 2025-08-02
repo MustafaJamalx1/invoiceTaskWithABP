@@ -13,35 +13,23 @@ namespace invoiceTask.Entites
         public string Name { get;  set; }
         public string Code { get;  set; }
         public int PartNo { get;  set; }
-        
-        public ICollection<ProductDiscount> Discounts { get; private set; }
-        public ICollection<ProductPricing> Pricings{ get; private set; } 
+
+        public ICollection<ProductDiscount> Discounts { get; private set; } = [];
+        public ICollection<ProductPricing> Pricings{ get; private set; } = [];
 
 
-      public void AddDiscount(ProductDiscount discount)
+        public void AddDiscount(ProductDiscount discount)
         {
-            var productDiscount = new ProductDiscount(
-                this.Id,
-                discount.Discount,
-                discount.StartDate,
-                discount.EndDate
-            );
-            Discounts ??= new List<ProductDiscount>();
-            Discounts.Add(productDiscount);
+
+            Discounts.Add(discount);
         }
         public void AddPricing(ProductPricing pricing)
         {
-            var productPricing = new ProductPricing(
-                this.Id,
-                pricing.Price,
-                pricing.StartDate,
-                pricing.EndDate
-            );
-            Pricings ??= new List<ProductPricing>();
-            Pricings.Add(productPricing);
+        
+            Pricings.Add(pricing);
         }
         public void RemoveDiscount(Guid discountId)
-        {
+        { 
             if (Discounts == null) return;
             var discount = Discounts.FirstOrDefault(d => d.Id == discountId);
             if (discount != null)

@@ -6,8 +6,6 @@ using invoiceTask.Products.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
@@ -35,7 +33,7 @@ namespace invoiceTask.Products
             {
                 throw new Exception("Product not found");
             }
-            var discount = new ProductDiscount(input.ProductId,input.Discount,input.StartDate,input.EndDate);
+            var discount = new ProductDiscount(Guid.NewGuid() ,input.ProductId,input.Discount,input.StartDate,input.EndDate);
             product.AddDiscount(discount);
             await _repository.UpdateAsync(product);
             return ObjectMapper.Map<ProductDiscount, ProductDiscountDto>(discount);
@@ -50,7 +48,7 @@ namespace invoiceTask.Products
             {
                 throw new Exception("Product not found");
             }
-            var pricing = new ProductPricing(input.ProductId, input.Price, input.StartDate, input.EndDate);
+            var pricing = new ProductPricing(Guid.NewGuid() ,input.ProductId, input.Price, input.StartDate, input.EndDate);
             product.AddPricing(pricing);
             await _repository.UpdateAsync(product); 
             return ObjectMapper.Map<ProductPricing, ProductPricingDto>(pricing);

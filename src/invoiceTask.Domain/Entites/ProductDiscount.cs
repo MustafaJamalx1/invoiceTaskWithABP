@@ -9,9 +9,9 @@ namespace invoiceTask.Entites
         public decimal Discount { get; private set; }
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }
-        public ProductDiscount(Guid productId, decimal discount, DateTime startDate, DateTime endDate)
+        public ProductDiscount(Guid id ,Guid productId, decimal discount, DateTime startDate, DateTime endDate)
         {
-            Id = Guid.NewGuid();
+            Id = id;
             ProductId = productId;
             Discount = discount;
             StartDate = startDate;

@@ -56,8 +56,9 @@ namespace invoiceTask.Invoices
                 .FirstOrDefault();
 
             if (discount == null)
-            {
+            { 
                 discount = new ProductDiscount(
+                     Guid.NewGuid(),
                     input.ProductId,
                     0,
                     DateTime.Now,
@@ -66,6 +67,7 @@ namespace invoiceTask.Invoices
             }
 
             var invoiceItem = new InvoiceItem(
+                Guid.NewGuid(),
                 input.InvoiceId,
                 input.ProductId,
                 input.Quantity,
@@ -140,6 +142,7 @@ namespace invoiceTask.Invoices
             if (discount == null)
             {
                 discount = new ProductDiscount(
+                    Guid.NewGuid(),
                     input.ProductId,
                     0,
                     DateTime.Now,

@@ -12,7 +12,7 @@ namespace invoiceTask.Entites
         public string CustomerName { get; private set; }
         public int InvoiceNo { get; private set; }
         public DateTime InvoiceDate { get; private set; }
-        public ICollection<InvoiceItem> InvoiceItems { get; private set; }
+        public ICollection<InvoiceItem> InvoiceItems { get; private set; } = [];
         public decimal TotalAmount { get; private set; }
         public decimal TotalDiscount { get; private set; }
         public decimal TotalNet { get; private set; }
@@ -33,23 +33,13 @@ namespace invoiceTask.Entites
         public void AddInvoiceItem(
             InvoiceItem invoiceItem)
         {
-            var item = new InvoiceItem(
-                this.Id,
-                invoiceItem.ProductId,
-                invoiceItem.Quantity,
-                invoiceItem.ProductPricingId,
-                invoiceItem.Price,
-                invoiceItem.ProductDiscountId,
-                invoiceItem.Discount
-            );
-            InvoiceItems ??= new List<InvoiceItem>();
 
-            InvoiceItems.Add(item);
+            InvoiceItems.Add(invoiceItem);
 
             // Update totals
-            TotalAmount += item.TotalPrice;
-            TotalDiscount += item.Discount;
-            TotalNet += item.TotalNet;
+            TotalAmount += invoiceItem.TotalPrice;
+            TotalDiscount += invoiceItem.Discount;
+            TotalNet += invoiceItem.TotalNet;
         }
         public void RemoveInvoiceItem(Guid invoiceItemId)
         {
